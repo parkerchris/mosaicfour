@@ -1,11 +1,23 @@
 import Head from 'next/head'
+import { NextPageContext } from 'next'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
+import { signIn, useSession, signOut, getSession } from 'next-auth/react'
+import { createSemanticDiagnosticsBuilderProgram } from 'typescript'
+import Auth from '../components/Auth'
+import Application from '../components/Application'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
+  const { data: session } = useSession();
+
+  console.log('here is data', session)
+
+  const reloadSession = () => {}
+
   return (
     <>
       <Head>
@@ -57,6 +69,14 @@ export default function Home() {
               priority
             />
           </div>
+        </div>
+
+        <div>
+          {session?.user.userType ? (
+            <Application/>
+          ) : (
+            <Auth session={session} reloadSession={reloadSession}/>
+          )}
         </div>
 
         <div className={styles.grid}>
@@ -120,4 +140,15 @@ export default function Home() {
       </main>
     </>
   )
+};
+
+export async function getServerSideProps(context: NextPageContext) {
+  const session = await getSession(context)
+
+  return {
+    props: {
+      session,
+    }
+  }
+
 }
