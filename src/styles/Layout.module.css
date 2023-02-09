@@ -1,0 +1,240 @@
+
+
+.gridContainer {
+
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 75px 1fr 50px;
+    grid-template-areas: 
+        "head"
+        "content"
+        "foot";
+}
+
+.header {
+    grid-area: head;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    background-color: rgb(247, 247, 247);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.nav {
+    grid-area: nav;
+    background-color: var(--background-gray);
+}
+
+.content {
+    grid-area: content;
+    overflow-y: hidden;
+    background-image: url('../../public/Revised_Lemon2.png');
+    display: flex;
+    justify-content: center;
+}
+
+.footer {
+    grid-area: foot;
+    border-top: 1px solid rgb(221, 221, 221);
+    background-color: rgb(247, 247, 247);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Header******************************************* */
+
+.headerContainer {
+    width: 90%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.linkContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.navLinksContainer {
+    display: flex;
+    justify-content: flex-start;
+    border: 1px solid blue;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.menuIcon {
+    font-size: 1.5rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 1.5rem;
+}
+
+.searchbar {
+    width: 600px;
+    height: 40px;
+    /* border: 1px solid rgb(221, 221, 221); */
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+    border-radius: 6px;
+    background-color: var(--secondary-gray);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.searchIcon {
+    color: var(--font-gray);
+    margin-left: 1.5rem;
+}
+
+.searchText {
+    color: var(--font-gray);
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-left: 0.5rem ;
+}
+
+
+.navLinks {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-right: 1.75rem;
+    color: var(--font-gray);
+}
+
+.avatar {
+    background-color: black;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatarDefault {
+    font-weight: 900;
+    color: rgb(247, 247, 247);
+}
+
+.anchor {
+    text-decoration: none;
+}
+
+/* Nav section  */
+
+.innerContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 25px;
+    margin-top: 25px;
+}
+
+.linkGroup {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin-bottom: 15px;
+    height: auto;
+    width: 150px;
+    border-radius: 6px;
+    margin-left: 10px;
+}
+
+.linkGroup:hover {
+    background-color: rgb(247, 247, 247);
+
+}
+
+
+.font {
+    font-weight: 600;
+    color: black;
+    margin-left: 0.5rem;
+    font-size: 1rem;
+}
+
+.icon {
+    font-size: 1.1rem;
+    color: black;
+}
+
+.p {
+    font-size: 0.75rem;
+    color: gray;
+    margin-bottom: 15px;
+}
+
+.placeholder {
+    width: 100%;
+    height: 20rem;
+}
+
+.counter {
+    height: 1rem;
+    width: 1.5rem;
+    border-radius: 0.5rem;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.5rem;
+}
+
+.insideCounter{
+    font-size: 0.75rem;
+    color: white;
+}
+
+/* Footer************************************************************ */
+
+.innerFooterContainer {
+    display: flex;
+    height: 100%;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.innerFooterOne {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.innerFooterTwo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.pLeft{
+    margin-right: 1rem;
+    font-weight: 400;
+}
+
+.pRight{
+    margin-left: 1rem;
+    font-weight: 600;
+}
