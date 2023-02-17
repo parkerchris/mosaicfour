@@ -27,3 +27,16 @@ export interface CreateUserTypeResponse {
     success?: boolean;
     error?: string
 }
+
+
+export interface LoadPropertiesData {
+    loadProperties: Array<LoadedProperties>
+}
+
+export interface LoadedProperties {
+    id: string;
+    address: string;
+    city: string;
+    state: string;
+    zip: string;
+}

@@ -7,8 +7,7 @@
 }
 
 .mainContent {
-    border: 1px solid red;
-    width: 50%;
+    width: 45%;
     height: 100%;
 }
 
@@ -18,7 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid purple;
+
 }
 
 
@@ -26,10 +25,19 @@
 .main {
     height: 100%;
     width: 100%;
-    border: 1px solid orange;
+
+}
+
+.address {
+    font-weight: 900;
+    font-size: 2.7rem;
+}
+
+.cityStateZipContainer {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 2rem;
+
+}
+
+.cityStateZip {
+    margin-right: 0.5rem;
 }

@@ -43,6 +43,7 @@ model User {
   userType      String?    //use this to differentiate investor vs property manager
   accounts      Account[]
   sessions      Session[]
+  Properties    Property[]
 }
 
 model VerificationToken {
@@ -51,4 +52,16 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Property {
+  id           String    @id @default(cuid())
+  createdAt    DateTime?
+  updatedAt    DateTime?
+  address      String
+  city         String
+  state        String
+  zip          String
+  owner        User      @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId      String    @unique
 }

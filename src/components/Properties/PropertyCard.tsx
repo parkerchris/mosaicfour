@@ -1,16 +1,26 @@
 
 import styles from "../../styles/PropertyCard.module.css"
+import Link from "next/link";
 
-export default function PropertyCard() {
+interface PropertyCardProps {
+    id: string;
+    address: string;
+    city: string;
+    state: string;
+    zip: string
+}
+
+const PropertyCard: any = ( props: any ) => {
     return (
+        <Link className={styles.link} href={`property/${props.id}`}>
                 <div className={styles.mainContainer}>
                     <div className={styles.detailsContainer}>
                         <div className={styles.firstDetailRow}>
-                            <h3 className={styles.address}>1109 Crest Rd.</h3>
+                            <h3 className={styles.address}>{props.address}</h3>
                             <p>$2,200/M</p>
                         </div>
                         <div className={styles.secondDetailRow}>
-                            <p>San Diego, CA.</p>
+                            <p>{props.city}, {props.state}.</p>
                             <div className={styles.statusContainer}>
                                 <div className={styles.statusIcon}></div>
                                 <div>
@@ -20,7 +30,9 @@ export default function PropertyCard() {
                         </div>
                     </div>
                 </div>
-
+            </Link>
 
     )
 }
+
+export default PropertyCard

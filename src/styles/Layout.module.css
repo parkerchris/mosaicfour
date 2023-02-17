@@ -117,6 +117,7 @@
     font-weight: 700;
     margin-right: 1.75rem;
     color: var(--font-gray);
+    text-decoration: none;
 }
 
 .avatar {

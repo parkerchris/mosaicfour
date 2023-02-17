@@ -1,5 +1,8 @@
 
-
+.link {
+    text-decoration: none;
+    color: inherit;
+}
 
 .mainContainer {
     gap: 2rem;
