@@ -139,6 +139,18 @@
     text-decoration: none;
 }
 
+.profileDropDown {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border: 1px solid black;
+    border-radius: 5px;
+    right: 100px;
+    top: 60px;
+    z-index: 10;
+    background-color: white;
+}
+
 /* Nav section  */
 
 .innerContainer {

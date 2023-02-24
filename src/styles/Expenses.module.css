@@ -1,0 +1,109 @@
+.top {
+    height: 60vh;
+    width: 100vw;
+    background-color: rgb(0,0,0);
+}
+
+.header {
+    height: 90px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 90vw;
+}
+
+.authenticationContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.authenticationContainer p {
+    color: white;
+}
+
+.authenticationContainer button {
+    border: none;
+    background-color: #dfff84;
+    padding: 16px 25px;
+    color: rgb(21,28,34);
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.logo {
+    color: white;
+}
+
+.bottom {
+    height: 50vh;
+    width: 100vw;
+    background-color: rgb(246,246,246);
+}
+
+.contentOne {
+    height: 50vh;
+    width: 100vw;
+}
+
+.header {
+
+
+}
+
+
+.mainContent {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.mainContent h1 {
+    color: rgb(255,255,255);
+    margin-bottom: 30px;
+    font-weight: 900;
+    font-size: 3.4rem;
+}
+
+.mainContent h3 {
+    color: rgb(255,255,255);
+    margin-bottom: 35px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.7rem;
+}
+
+.mainContent button {
+    border: none;
+    background-color: #dfff84;
+    padding: 16px 25px;
+    color: rgb(21,28,34);
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.mainContent p {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.8rem;
+}
+
+.imageContainer {
+    width: 700px;
+    height: 500px;
+    background-image: url('../../public/f4a5be82b777676929c8a77df1d0a715.png');
+    border: 1px solid greenyellow
+}

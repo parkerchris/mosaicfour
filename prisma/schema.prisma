@@ -4,22 +4,22 @@ datasource db {
 }
 
 generator client {
-  provider        = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -35,15 +35,17 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  userType      String?    //use this to differentiate investor vs property manager
-  accounts      Account[]
-  sessions      Session[]
-  Properties    Property[]
+  id             String          @id @default(cuid())
+  name           String?
+  email          String?         @unique
+  emailVerified  DateTime?
+  image          String?
+  userType       String? //use this to differentiate investor vs property manager. Replace this with the tole type below
+  role           Role            @default(owner)
+  accounts       Account[]
+  sessions       Session[]
+  Properties     Property[]
+  //propertyGroups PropertyGroup[]
 }
 
 model VerificationToken {
@@ -55,13 +57,80 @@ model VerificationToken {
 }
 
 model Property {
+  id                String           @id @default(cuid())
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  address           String
+  city              String
+  state             String
+  zip               String
+  owner             User            @relation(fields: [ownerId], references: [id])
+  ownerId           String          
+  //owner             User[]                       
+  //ownership         String?
+  //occupied          Boolean?
+  //value             Int?
+  //rent              Int?
+  //rentDuration      String?
+  //propertyGroup     PropertyGroup?     @relation(fields: [propertyGroupId], references: [id])
+  //propertyGroupId   String?            @unique
+  //insurancePolicies InsurancePolicy[]
+  //tenants           Tenant[]
+  propertyData      PropertyData?
+}
+
+model PropertyGroup {
+  id         String     @id @default(cuid())
+  createdAt  DateTime?  @default(now())
+  updatedAt  DateTime?  @updatedAt
+  //properties Property[]
+  //members    User[]
+}
+
+model PropertyData {
+  id            String      @id @default(cuid())
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  property      Property    @relation(fields: [propertyId], references: [id])
+  propertyId    String      @unique
+  beds          Float?      
+  baths         Float?
+  sqft          Int?
+  value         Int?
+  purchasePrice Int?
+  rent          Int?
+  rentDuration  RentDuration?
+
+}
+
+model InsurancePolicy {
   id           String    @id @default(cuid())
-  createdAt    DateTime?
-  updatedAt    DateTime?
-  address      String
-  city         String
-  state        String
-  zip          String
-  owner        User      @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-  ownerId      String    @unique
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  //property     Property? @relation(fields: [propertyId], references: [id])
+  //propertyId   String?   
+  policyType   String?
+  policyNumber String?
+}
+
+model Tenant {
+  id         String    @id @default(cuid())
+  createdAt  DateTime? @default(now())
+  updatedAt  DateTime? @updatedAt
+  firstName  String
+  lastName   String
+  email      String
+  moveIn     DateTime
+  //property   Property? @relation(fields: [propertyId], references: [id])
+  //propertyId String?   @unique
+}
+
+enum Role {
+  owner
+  manager
+}
+
+enum RentDuration {
+  night
+  month
 }

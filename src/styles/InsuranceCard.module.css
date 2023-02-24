@@ -1,0 +1,56 @@
+.cardContainer {
+    background-color: #f6f6f6;
+    border-radius: 10px;
+    height: 200px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.topContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 40%;
+    height: 100%;
+    width: 100%;
+    padding: 20px 30px;
+    border-bottom: 1px solid lightgray;
+}
+
+.policyCompany {
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: #0157ff;
+}
+
+.policyType {
+    font-weight: 800;
+    font-size: 1.3rem;
+}
+
+.policyNumber {
+    color: #515260;
+    font-size: 0.8rem;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.policyAmountContainer {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.policyAmount {
+    font-weight: 900;
+    font-size: 1.4rem;
+
+}
+
+.bottomContainer {
+    height: 100%;
+    width: 100%;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+}

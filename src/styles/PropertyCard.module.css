@@ -7,7 +7,7 @@
 .mainContainer {
     gap: 2rem;
     width: 350px;
-    background-color: white;
+    background-color: #1f2937;
     /* background-color: rgb(28,30,32); */
     border-radius: 12px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -32,6 +32,7 @@
     height: 30%;
     border-top: 1px solid var(--border-gray);
     z-index: 10;
+    padding: 10px 10px;
 }
 
 .firstDetailRow {
@@ -45,10 +46,20 @@
 }
 
 .address {
-    color: var(--font-gray);
+    color: #e5e7eb;
+    /* color: var(--font-gray); */
     margin-bottom: 1rem;
     font-weight: 900;
     font-size: 1.3rem;
+}
+
+.cityState {
+    color: #9ca3af;
+    font-size: 0.85rem;
+}
+
+.rent {
+    color: #9ca3af;
 }
 
 
@@ -64,7 +75,7 @@
 .statusContainer {
     display: flex;
     align-items: center;
-    
+
 }
 
 .statusIcon {
@@ -73,15 +84,19 @@
     border-radius: 50%;
     /* background-color: rgba(42,219,196,255); */
     background-color: rgba(41,223,198,255);
+
 }
 
 .status {
     color: gray;
     font-weight: 700;
     font-size: 0.7rem;
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */
     margin-left: 0.5rem;
+
 }
+
+
 
 .todayContainer {
     height: 100px;

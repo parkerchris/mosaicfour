@@ -15,10 +15,22 @@ import { IoSearch } from "react-icons/io5";
 // import { TbPaint } from "react-icons/tb"
 // import { FiMapPin } from "react-icons/fi"
 import { Inter } from '@next/font/google'
+import { useState } from "react";
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Layout( {children}:any ) {
+
+    const [ showProfileDrop, setShowProfileDrop ] = useState(false)
+
+    function notHovering() {
+        setShowProfileDrop(false)
+    }
+
+    function hovering() {
+        setShowProfileDrop(true)
+    }
+
     return (
         <div className={styles.gridContainer}>
             <div className={styles.header}>
@@ -27,13 +39,26 @@ export default function Layout( {children}:any ) {
                         <h1 className={styles.logo}>MOSAIC</h1>
                         <Link className={styles.navLinks} href="/dashboard">Dashboard</Link>
                         <Link className={styles.navLinks} href="/properties">Properties</Link>
-                        <Link className={styles.navLinks} href="/">Expenses</Link>
+                        <Link className={styles.navLinks} href="/expenses">Expenses</Link>
                     </div>
                         
                     <div>
-                        <div className={styles.avatar}><p className={styles.avatarDefault}>CP</p></div>
+                        <div
+                         className={styles.avatar}
+                         onMouseEnter={hovering}
+                         onMouseLeave={notHovering}
+                            ><p className={styles.avatarDefault}>CP</p></div>
                     </div>
                 </div>
+                {showProfileDrop && <div 
+                    className={styles.profileDropDown}
+                    onMouseEnter={hovering}
+                    onMouseLeave={notHovering}    
+                        >
+                            <p>Profile</p>
+                            <p>Settings</p>
+                            <p>Logout</p>
+                            </div>}
             </div>
             {/* <div className={styles.nav}>
                 <div className={styles.innerContainer}>

@@ -1,0 +1,60 @@
+.wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow-y: scroll;
+}
+
+.mainContent {
+    border: 1px solid red;
+    width: 50%;
+    height: 100%;
+}
+
+.header {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid purple;
+}
+
+
+
+.main {
+    height: 100%;
+    width: 100%;
+    border: 1px solid orange;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 2rem;
+}
+
+.metricContainer {
+    height: 100px;
+    width: 200px;
+    background-color: lightgray;
+    border-radius: 8px;
+    margin-right: 2rem;
+    padding: 10px 10px;
+}
+
+.metricContainersContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+}
+
+.dollar {
+    font-weight: bold;
+}
+
+.metricAmount {
+    font-weight: 900;
+    font-size: 1.5rem;
+}

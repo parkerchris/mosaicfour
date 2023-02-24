@@ -7,8 +7,7 @@
 }
 
 .mainContent {
-    border: 1px solid red;
-    width: 50%;
+    width: 40%;
     height: 100%;
 }
 
@@ -18,18 +17,38 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid purple;
 }
 
-
+.headerSpan {
+    font-weight: 900;
+    color: #6b7280;
+    font-size: 1rem;
+}
 
 .main {
     height: 100%;
     width: 100%;
-    border: 1px solid orange;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     padding-top: 2rem;
+}
+
+.addPropertyButton {
+    border: none;
+    background-color: black;
+    padding: 16px 25px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.end {
+    font-size: 0.9rem;
+    color: #d1d5db;
+    font-weight: bold;
 }

@@ -28,8 +28,8 @@ const Properties: React.FC<PropertiesProps> = ({ session }) => {
             <div className={styles.wrapper}>
                 <div className={styles.mainContent}>
                     <div className={styles.header}>
-                        <h1>Properties</h1>
-                        <button onClick={handleClick}>Add Property</button>
+                        <h1>Properties <span className={styles.headerSpan}>3</span></h1>
+                        <button onClick={handleClick} className={styles.addPropertyButton}>Add Property</button>
                     </div>
                     <div className={styles.addProp}>
                         {toggleAddProperty && <AddProperty/>}
@@ -45,6 +45,7 @@ const Properties: React.FC<PropertiesProps> = ({ session }) => {
                                 zip={property.zip}
                             />
                         ))}
+                        <p className={styles.end}>The end</p>
                     </div>
                 </div>
             </div>

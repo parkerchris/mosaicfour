@@ -7,7 +7,7 @@
 }
 
 .mainContent {
-    width: 45%;
+    width: 35%;
     height: 100%;
 }
 
@@ -25,7 +25,6 @@
 .main {
     height: 100%;
     width: 100%;
-
 }
 
 .address {
@@ -41,3 +40,32 @@
 .cityStateZip {
     margin-right: 0.5rem;
 }
+
+.dataContainer,
+.propertyValue {
+    margin-bottom: 100px;
+    border-top: 1px solid lightgrey;
+}
+
+.dataHeaderContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contentHeader {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.cardContainer {
+    margin-left: 20px;
+}
+
+.deleteButton {
+    padding: 1rem 3rem;
+    font-weight: 900;
+    border-radius: 8px;
+    border: none;
+    background: radial-gradient(circle at rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227,28,95), 40%, rgb(215,4,102), 57.5%, rgb(189,30,89), 75%, rgb(189,30,89), 100%);
+}
+

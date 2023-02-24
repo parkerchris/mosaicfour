@@ -5,6 +5,9 @@ import { getSession } from 'next-auth/react';
 import { GraphQLContext } from '../../util/types'
 import { CreateUserTypeResponse } from '../../util/types'
 import { PrismaClient } from '@prisma/client'
+import { ApolloError } from '@apollo/client';
+import Property from '../property/[pid]';
+import { servicesVersion } from 'typescript';
 
 //review @2hr mark to setup typedefs and resolvers in their own files and use lodash merge to combine into a unified index file.
 // ^^^^^^^^^^^ LOOK UP ^^^^^^^^^^^^^
@@ -42,16 +45,59 @@ const resolvers = {
     properties: () => {
         return properties
     },
-    loadProperties: () => {
-      return properties
-    },
-    loadProperty: (
+    loadProperties: async (
       parent: any,
       args: any,
       context: any,
       info: any
     ) => {
-      return properties[0]
+      const { session, prisma } = context
+
+      if(!session?.user) {
+        return {
+          error: "Not authorized"
+        }
+      }
+
+      try {
+        const loadedProperties = await prisma.property.findMany({
+          where: { ownerId: session.user.id }
+        })
+    
+        
+        return loadedProperties
+
+      } catch(error) {
+        console.log("Error loading properties", error)
+      }
+
+    },
+    loadProperty: async(
+      parent: any,
+      args: any,
+      context: any,
+      info: any
+    ) => {
+      const { session, prisma } = context
+
+      if (!session?.user) {
+        return {
+            error: "Not authorized"
+        }
+      }
+
+      try {
+        const loadedProperty = await prisma.property.findUnique({
+          where: {
+            id: args.propId
+          }
+        })
+
+        return loadedProperty
+
+      } catch(error) {
+        console.log("this is the load property error", error)
+      }
     }
   },
   Mutation: {
@@ -82,13 +128,52 @@ const resolvers = {
             }
         }
     },
-    addProperty: (
+    addProperty: async (
       parent : any,
       args : any,
       context : any,
       info : any
     ) => {
-      console.log("args have been added", args)
+      const { session, prisma } = context
+
+      if (!session?.user) {
+        //throw new ApolloError("Not Authorized");
+      }
+
+      const {
+        user: { id: userId },
+      } = session;
+
+      try {
+        const property = await prisma.property.create({
+            data: {
+              address: args.address,
+              city: args.city,
+              state: args.state,
+              zip: args.zip,
+              ownerId: userId,
+            }
+        },
+        //include: {},
+
+        )
+        //review these lines of code. Ensure this is the best way to create property data once the property has been created.
+        const propertyData = await prisma.propertyData.create({
+          data: {
+            propertyId: property.id
+          }
+        })
+
+        return {
+          success: "Successfully added property!"
+        }
+
+      } catch(error) {
+        console.log('Add property error', error);
+        //throw new ApolloError("Error adding property")
+      }
+
+
     }
   }
 };

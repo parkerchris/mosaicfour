@@ -17,15 +17,15 @@ const PropertyCard: any = ( props: any ) => {
                     <div className={styles.detailsContainer}>
                         <div className={styles.firstDetailRow}>
                             <h3 className={styles.address}>{props.address}</h3>
-                            <p>$2,200/M</p>
+                            <p className={styles.rent}>$2,200/M</p>
                         </div>
                         <div className={styles.secondDetailRow}>
-                            <p>{props.city}, {props.state}.</p>
+                            <p className={styles.cityState}>{props.city}, {props.state}.</p>
                             <div className={styles.statusContainer}>
                                 <div className={styles.statusIcon}></div>
-                                <div>
-                                    <p className={styles.status}>OCCUPIED</p>
-                                </div>
+
+                                <p className={styles.status}>OCCUPIED</p>
+
                             </div>
                         </div>
                     </div>

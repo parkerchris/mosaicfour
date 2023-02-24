@@ -1,0 +1,19 @@
+
+.header {
+    margin-bottom: 10px;
+}
+
+.form {
+    display: flex;
+}
+
+.labelInputContainer {
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+}
+
+.input {
+    padding: 5px;
+    border-radius: 3px;
+}
