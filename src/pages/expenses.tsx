@@ -2,6 +2,7 @@ import Layout from '../components/Layout/Layout'
 import styles from "../styles/Expenses.module.css"
 import Image from 'next/image'
 import InsuranceCard from '@/components/Properties/InsuranceCard'
+import DataDisplay from '@/components/DataDisplay/DataDisplay'
 
 export default function Expenses() {
     return (
@@ -38,6 +39,7 @@ export default function Expenses() {
             <div className={styles.contentOne}>
                 <div className={styles.contentOneTop}>
                         <InsuranceCard/>
+                        <DataDisplay/>
                 </div>
             </div>
         </div>

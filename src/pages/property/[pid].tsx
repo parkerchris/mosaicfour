@@ -6,6 +6,7 @@ import PropertyOperations from '../../graphql/operations/properties'
 import Layout from '../../components/Layout/Layout'
 import styles from '../../styles/Property.module.css'
 import InsuranceCard from "@/components/Properties/InsuranceCard"
+import DataDisplay from "@/components/DataDisplay/DataDisplay"
 
 
 export default function Property() {
@@ -19,24 +20,53 @@ export default function Property() {
 
     console.log(data)
 
+    const [ dataDisplayed, setDataDisplayed ] = useState("propertyInfo")
+
     return (
         <Layout>
             <div className={styles.wrapper}>
                 <div className={styles.mainContent}>
-                    <div className={styles.header}></div>
-                    <div className={styles.main}>
+                    <div className={styles.header}>
                         <h1 className={styles.address}>{data?.loadProperty.address}</h1>
                         <div className={styles.cityStateZipContainer}>
                             <p className={styles.cityStateZip}>{data?.loadProperty.city},</p>
                             <p className={styles.cityStateZip}>{data?.loadProperty.state}.</p>
                             <p className={styles.cityStateZip}>{data?.loadProperty.zip}</p>
                         </div>
-                        <p>sqft: 2100 • bed: 3 • bath: 2</p>
-                        <div className={styles.propertyValue}>
-                            <p>Current Value: $410,000</p>
-                            <p>Purchase Price: $310,000</p>
+                        <div className={styles.partnersContainer}>
+                            <div className={styles.avatar}><p>CP</p></div>
+                            <div className={styles.avatar}><p>PP</p></div>
+                            <div className={styles.avatar}><p>KP</p></div>
                         </div>
-                        <div className={styles.dataContainer}>
+                    </div>
+                    <div className={styles.main}>
+                        <div className={styles.headerSelectorContainer}>
+                            <div className={styles.selectorContainer}>
+                                <p className={styles.selector}>Performance</p>
+                            </div>
+                            <div className={styles.selectorContainer}>
+                                <p 
+                                    className={styles.selector}
+                                    onClick={() => setDataDisplayed("propertyInfo")}
+                                        >Property Info</p>
+                            </div>
+                            <div className={styles.selectorContainer}>
+                                <p className={styles.selector}>Tax & Insurance</p>
+                            </div>
+                            <div className={styles.selectorContainer}>
+                                <p 
+                                    className={styles.selector}
+                                    onClick={() => setDataDisplayed("maintenance")}
+                                        >Maintenance</p>
+                            </div>
+                            <div className={styles.selectorContainer}>
+                                <p className={styles.selector}>Tenants</p>
+                            </div>
+                            <div className={styles.selectorContainer}>
+                                <p className={styles.selector}>Notes</p>
+                            </div>
+                        </div>
+{/*                             <div className={styles.dataContainer}>
                             <div className={styles.dataHeaderContainer}>
                                 <h3 className={styles.contentHeader}>Maintenance Requests</h3>
                                 <button>Add Request</button>
@@ -80,8 +110,19 @@ export default function Property() {
                         <div className={styles.dataContainer}>
                             <h3>Notes</h3>
                         </div>
-                        <button className={styles.deleteButton}>Delete</button>
-                    </div>
+                        <button className={styles.deleteButton}>Delete</button> */}
+
+                            {(() => {
+                                    switch (dataDisplayed) {
+                                    case 'propertyInfo':
+                                        return <DataDisplay/>
+                                    case 'mainteance':
+                                        return "maintenance"
+                                    default:
+                                        return null
+                                    }
+                                })()}
+                    </div>                    
                 </div>
             </div>
         </Layout>

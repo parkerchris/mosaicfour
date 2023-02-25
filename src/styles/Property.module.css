@@ -7,20 +7,39 @@
 }
 
 .mainContent {
-    width: 35%;
+    width: 45%;
     height: 100%;
 }
 
 .header {
-    height: 100px;
+    height: 180px;
     width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 }
 
+.partnersContainer {
+    display: flex;
+}
 
+.avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: black;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar p {
+    font-size: 1rem;
+    font-weight: 900;
+    color: white;
+}
 
 .main {
     height: 100%;
@@ -34,17 +53,15 @@
 
 .cityStateZipContainer {
     display: flex;
-
+    margin-bottom: 10px;
 }
 
 .cityStateZip {
     margin-right: 0.5rem;
 }
 
-.dataContainer,
-.propertyValue {
+.dataContainer {
     margin-bottom: 100px;
-    border-top: 1px solid lightgrey;
 }
 
 .dataHeaderContainer {
@@ -55,6 +72,43 @@
 .contentHeader {
     margin-top: 5px;
     margin-bottom: 20px;
+}
+
+.propertyValue {
+    margin-bottom: 50px;
+}
+
+
+.headerSelectorContainer {
+height: 2rem;
+width: 100%;
+display: flex;
+align-items: flex-end;
+justify-content: space-between;
+margin-bottom: 50px;
+cursor: pointer;
+border-bottom: 1px solid #e5e7eb;
+
+}
+
+.selectorContainer {
+    height: 100%;
+    /* border-bottom: 2px solid black; */
+}
+
+.selectorContainer:hover {
+    border-bottom: 2px solid black
+}
+
+.selectorContainer:hover p {
+    color: black;
+}
+
+.selector {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #374151;
+    /* color: #4b5563; */
 }
 
 .cardContainer {

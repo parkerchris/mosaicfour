@@ -7,7 +7,7 @@
 }
 
 .mainContent {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 50%;
     height: 100%;
 }
@@ -18,7 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid purple;
+    /* border: 1px solid purple; */
 }
 
 
@@ -26,7 +26,7 @@
 .main {
     height: 100%;
     width: 100%;
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -37,10 +37,14 @@
 .metricContainer {
     height: 100px;
     width: 200px;
-    background-color: lightgray;
+    background-color: #1f2937;
     border-radius: 8px;
     margin-right: 2rem;
-    padding: 10px 10px;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .metricContainersContainer {
@@ -52,9 +56,24 @@
 
 .dollar {
     font-weight: bold;
+    font-size: 0.8rem;
 }
 
 .metricAmount {
     font-weight: 900;
     font-size: 1.5rem;
+    color: #e5e7eb;
+}
+
+.metricName {
+    color: #9ca3af;
+}
+
+.popContainer {
+    display: flex;
+    align-items: center;
+}
+
+.arrow {
+    color: rgba(41,223,198,255);
 }

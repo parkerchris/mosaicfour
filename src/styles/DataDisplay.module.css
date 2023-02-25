@@ -1,0 +1,60 @@
+.mainContainer {
+    height: 1000px;
+    width: 100%;
+    display: flex;
+}
+
+.leftContainer {
+    height: 100%;
+    width: 20%;
+}
+
+.rightContainer {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.farRightContainer {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.farRightContainer button {
+    border: none;
+    background-color: #1f2937;
+    padding: 16px 25px;
+    color: #d1d5db;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    height: 50px;
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+
+
+.selectorContainer {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.selectorContainer:hover {
+    background-color: #1f2937;
+}
+
+.selectorContainer:hover p {
+    color: #e5e7eb;
+}
+
+.selectorContainer p {
+    color: #374151;
+    font-size: 1.1rem;
+    font-weight: 700;
+
+}

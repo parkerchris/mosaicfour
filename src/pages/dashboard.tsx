@@ -1,5 +1,9 @@
 import Layout from '../components/Layout/Layout'
 import styles from "../styles/Dashboard.module.css"
+import { BsArrowUpRight } from "react-icons/bs";
+import { BsArrowDownRight } from "react-icons/bs";
+import { AiOutlineArrowUp } from "react-icons/ai";
+
 
 
 export default function Dashboard() {
@@ -18,9 +22,12 @@ export default function Dashboard() {
                         </div>
                         <div className={styles.metricContainersContainer}>
                             <div className={styles.metricContainer}>
-                                <p className={styles.metricAmount}><span className={styles.dollar}>$</span>1,200,000</p>
+                                <p className={styles.metricAmount}><span className={styles.dollar}>$</span>2,200,000</p>
                                 <p className={styles.metricName}>Asset Value</p>
-                                <p>$1,200,000</p>
+                                <div className={styles.popContainer}>
+                                    <AiOutlineArrowUp className={styles.arrow}/>
+                                    <p>$1,200,000</p>
+                                </div>
                             </div>
                             <div className={styles.metricContainer}>
                                 <p>$1,200,000</p>
