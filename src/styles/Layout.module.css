@@ -6,7 +6,7 @@
     width: 100vw;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 75px 1fr 50px;
+    grid-template-rows: 65px 1fr 50px;
     grid-template-areas: 
         "head"
         "content"
@@ -116,7 +116,8 @@
     font-size: 0.85rem;
     font-weight: 700;
     margin-right: 1.75rem;
-    color: var(--font-gray);
+    /* color: var(--font-gray); */
+    color: rgb(74, 74, 74);
     text-decoration: none;
 }
 

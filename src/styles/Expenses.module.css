@@ -1,109 +1,128 @@
-.top {
-    height: 60vh;
-    width: 100vw;
-    background-color: rgb(0,0,0);
+.wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow-y: scroll;
+}
+
+.mainContent {
+    width: 40%;
+    height: 100%;
 }
 
 .header {
-    height: 90px;
-    width: 100vw;
+    height: 100px;
+    width: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.topHeader {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.bottomHeader {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.searchBar {
+    border: 1px solid #d1d5db;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    margin-right: 1rem;
+    color: #9ca3af;
+}
+
+.filterButton {
+    border: 1px solid #d1d5db;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: #9ca3af;
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.h1 {
+    color: rgb(74, 74, 74);
+}
+
+.addButton {
+    border: none;
+    background: none;
+    font-weight: 800;
+    color: rgb(255, 0, 131);
+    cursor: pointer;
+}
+
+/*********************** MOVE TO SEPERATE COMPONENT ****************************/
+
+.leftColumn {
+    height: 100%;
+
+}
+
+.rightColumn {
+    height: 100%;
+
+}
+
+
+.incomeExpenses {
+    height: 300px;
+    width: 200px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    background-color: #e5e7eb;
+    box-shadow: rgb(0 0 0 / 16%) 0px 47px 46px -27px, rgb(0 0 0 / 6%) 0px 2px 12px 0px;
+}
+
+.income {
+    width: 100%;
+    flex-basis: 50%;
+    border-bottom: 1px solid #f3f4f6;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.headerContainer {
+.expenses{
+    width: 100%;
+    flex-basis: 50%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    width: 90vw;
-}
-
-.authenticationContainer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.authenticationContainer p {
-    color: white;
-}
-
-.authenticationContainer button {
-    border: none;
-    background-color: #dfff84;
-    padding: 16px 25px;
-    color: rgb(21,28,34);
-    font-weight: bold;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    margin-left: 20px;
-    cursor: pointer;
-}
-
-.logo {
-    color: white;
-}
-
-.bottom {
-    height: 50vh;
-    width: 100vw;
-    background-color: rgb(246,246,246);
-}
-
-.contentOne {
-    height: 50vh;
-    width: 100vw;
-}
-
-.header {
-
-
-}
-
-
-.mainContent {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-.mainContent h1 {
-    color: rgb(255,255,255);
-    margin-bottom: 30px;
+
+.amount {
+    color: #1f2937;
     font-weight: 900;
-    font-size: 3.4rem;
-}
-
-.mainContent h3 {
-    color: rgb(255,255,255);
-    margin-bottom: 35px;
-    font-weight: 400;
-    text-align: center;
-    line-height: 1.7rem;
-}
-
-.mainContent button {
-    border: none;
-    background-color: #dfff84;
-    padding: 16px 25px;
-    color: rgb(21,28,34);
-    font-weight: bold;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-    cursor: pointer;
-}
-
-.mainContent p {
-    color: rgba(255,255,255,0.5);
-    font-size: 0.8rem;
-}
-
-.imageContainer {
-    width: 700px;
-    height: 500px;
-    background-image: url('../../public/f4a5be82b777676929c8a77df1d0a715.png');
-    border: 1px solid greenyellow
+    font-size: 1.2rem;
 }

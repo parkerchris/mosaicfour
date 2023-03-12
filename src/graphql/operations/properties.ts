@@ -20,6 +20,9 @@ export default {
                     city
                     state
                     zip
+                    propertyData {
+                        sqft
+                    }
                 }
             }
         `

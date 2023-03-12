@@ -3,7 +3,24 @@ import { useState } from "react"
 import DataPoint from "./DataPoint"
 
 
-export default function DataDisplay() {
+export default function DataDisplay( props: any ) {
+/* 
+    const [ propertyInfo, setPropertyInfo ] = useState({
+        sgft: "-",
+        beds: "-",
+        baths: "-",
+        yearBuilt: "-",
+        dateOfPurchase: "-",
+        purchasePrice: "-",
+        parcelNumber: "-",
+        mailboxNumber: "-",
+        mailBoxLocation: "-",
+        garbageDay: "-",
+        landscapeDay: "-",
+    }) */
+
+    const [ propertyInfo, setPropertyInfo ] = useState("-")
+    
     
     const [ editMode, setEditMode ] = useState(false)
 
@@ -30,10 +47,21 @@ export default function DataDisplay() {
             </div>
             <div className={styles.rightContainer}>
                 <form>
+                    <div className={styles.dataPointContainer}>
+                        <label className={styles.label}>This is the square footage:</label>
+                            { editMode ? 
+                        <input
+                            className={styles.input}
+                            type="text"
+                            placeholder={props.sqft} 
+                            ></input> :
+                        <p className={styles.p}>{props.sqft}</p>
+                }
+                    </div>
                     <DataPoint
                         editMode={editMode}
                         label="Sqft"
-                        dataValue="2100"
+                        dataValue={props.sqft}
                     />
                     <DataPoint
                         editMode={editMode}

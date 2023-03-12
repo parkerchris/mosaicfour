@@ -7,6 +7,8 @@ import Layout from '../../components/Layout/Layout'
 import styles from '../../styles/Property.module.css'
 import InsuranceCard from "@/components/Properties/InsuranceCard"
 import DataDisplay from "@/components/DataDisplay/DataDisplay"
+import MaintenanceDataDisplay from "@/components/DataDisplay/MaintenanceDataDisplay"
+import TaxInsuranceDataDisplay from "@/components/DataDisplay/TaxInsuranceDataDisplay"
 
 
 export default function Property() {
@@ -27,17 +29,21 @@ export default function Property() {
             <div className={styles.wrapper}>
                 <div className={styles.mainContent}>
                     <div className={styles.header}>
-                        <h1 className={styles.address}>{data?.loadProperty.address}</h1>
+                        <div className={styles.headerInnerContainer}>
+                            <h1 className={styles.address}>{data?.loadProperty.address}</h1>
+                            <div className={styles.partnersContainer}>
+                                <div className={styles.avatar}><p>CP</p></div>
+                                <div className={styles.avatar}><p>PP</p></div>
+                                <div className={styles.avatar}><p>KP</p></div>
+                            </div>
+                        </div>
+
                         <div className={styles.cityStateZipContainer}>
                             <p className={styles.cityStateZip}>{data?.loadProperty.city},</p>
                             <p className={styles.cityStateZip}>{data?.loadProperty.state}.</p>
                             <p className={styles.cityStateZip}>{data?.loadProperty.zip}</p>
                         </div>
-                        <div className={styles.partnersContainer}>
-                            <div className={styles.avatar}><p>CP</p></div>
-                            <div className={styles.avatar}><p>PP</p></div>
-                            <div className={styles.avatar}><p>KP</p></div>
-                        </div>
+
                     </div>
                     <div className={styles.main}>
                         <div className={styles.headerSelectorContainer}>
@@ -51,7 +57,10 @@ export default function Property() {
                                         >Property Info</p>
                             </div>
                             <div className={styles.selectorContainer}>
-                                <p className={styles.selector}>Tax & Insurance</p>
+                                <p 
+                                    className={styles.selector}
+                                    onClick={() => setDataDisplayed("taxInsurance")}
+                                        >Tax & Insurance</p>
                             </div>
                             <div className={styles.selectorContainer}>
                                 <p 
@@ -115,9 +124,13 @@ export default function Property() {
                             {(() => {
                                     switch (dataDisplayed) {
                                     case 'propertyInfo':
-                                        return <DataDisplay/>
-                                    case 'mainteance':
-                                        return "maintenance"
+                                        return <DataDisplay
+                                                sqft={data?.loadProperty.propertyData.sqft}
+                                            />
+                                    case 'maintenance':
+                                        return <MaintenanceDataDisplay/>
+                                    case 'taxInsurance':
+                                        return <TaxInsuranceDataDisplay/>
                                     default:
                                         return null
                                     }

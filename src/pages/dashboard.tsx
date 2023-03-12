@@ -15,48 +15,43 @@ export default function Dashboard() {
                         <h1>Hello, Chris</h1>
                     </div>
                     <div className={styles.main}>
-                        <div>
-                            <h3>$32,000</h3>
-                            <p>Since January 1st</p>
-                            <p>Appreciation + Principal Paydown + Cash Flow</p>
-                        </div>
-                        <div className={styles.metricContainersContainer}>
-                            <div className={styles.metricContainer}>
-                                <p className={styles.metricAmount}><span className={styles.dollar}>$</span>2,200,000</p>
-                                <p className={styles.metricName}>Asset Value</p>
-                                <div className={styles.popContainer}>
-                                    <AiOutlineArrowUp className={styles.arrow}/>
-                                    <p>$1,200,000</p>
+
+                        <div className={styles.topLevelMetricContainer}>
+                            <div className={styles.metricContainersContainer}>
+                                <div className={styles.metricContainer}>
+                                    <p className={styles.amount}>$2,200,000</p>
+                                    <p className={styles.label}>Asset Value</p>
+                                </div>
+                                <div className={styles.metricContainer}>
+                                    <p className={styles.amount}>$1,200,000</p>
+                                    <p className={styles.label}>Equity</p>
+                                    {/* <p>$1,200,000</p> */}
+                                </div>
+                                <div className={styles.lastContainer}>
+                                    <p className={styles.amount}>$1,200,000</p>
+                                    <p>Debt</p>
+                                    {/* <p>$1,200,000</p> */}
                                 </div>
                             </div>
-                            <div className={styles.metricContainer}>
-                                <p>$1,200,000</p>
-                                <p>Equity</p>
-                                <p>$1,200,000</p>
-                            </div>
-                            <div className={styles.metricContainer}>
-                                <p>$1,200,000</p>
-                                <p>Debt</p>
-                                <p>$1,200,000</p>
-                            </div>
-                        </div>
-                        <div className={styles.metricContainersContainer}>
-                            <div className={styles.metricContainer}>
-                                <p>$1,200,000</p>
-                                <p>Rent</p>
-                                <p>$1,200,000</p>
-                            </div>
-                            <div className={styles.metricContainer}>
-                                <p>$1,200,000</p>
-                                <p>Expenses</p>
-                                <p>$1,200,000</p>
-                            </div>
-                            <div className={styles.metricContainer}>
-                                <p>$1,200,000</p>
-                                <p>Cash flow</p>
-                                <p>$1,200,000</p>
+                            <div className={styles.metricContainersContainer}>
+                                <div className={styles.metricContainer}>
+                                    <p className={styles.amount}>$1,200,000</p>
+                                    <p>Rent</p>
+                                    {/* <p>$1,200,000</p> */}
+                                </div>
+                                <div className={styles.metricContainer}>
+                                    <p className={styles.amount}>$1,200,000</p>
+                                    <p>Expenses</p>
+                                    {/* <p>$1,200,000</p> */}
+                                </div>
+                                <div className={styles.lastContainer}>
+                                    <p className={styles.amount}>$1,200,000</p>
+                                    <p>Cash flow</p>
+                                    {/* <p>$1,200,000</p> */}
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>    

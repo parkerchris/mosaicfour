@@ -58,23 +58,3 @@
     font-weight: 700;
 
 }
-
-
-/* Data Point */
-.dataPointContainer {
-    display: flex;
-    align-items: center;
-    width: 400px;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.label {
-    margin-right: 5px;
-
-}
-
-.input {
-    padding: 10px;
-    border-radius: 4px;
-}

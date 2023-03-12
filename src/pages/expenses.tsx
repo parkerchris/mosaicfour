@@ -3,45 +3,60 @@ import styles from "../styles/Expenses.module.css"
 import Image from 'next/image'
 import InsuranceCard from '@/components/Properties/InsuranceCard'
 import DataDisplay from '@/components/DataDisplay/DataDisplay'
+import LedgerCard from '@/components/Ledger/LedgerCard'
 
-export default function Expenses() {
+interface ExpensesProps {
+
+}
+
+
+const Expenses: React.FC<ExpensesProps> = () => {
+
+
+
     return (
-        <div>
-            <div className={styles.top}>
+        <Layout>
+        <div className={styles.wrapper}>
+            <div className={styles.mainContent}>
                 <div className={styles.header}>
-                    <div className={styles.headerContainer}>
-                    <div>
-                        <h1 className={styles.logo}>LOGO</h1>
+                    <div className={styles.topHeader}>
+                        <h1 className={styles.h1}>Ledger</h1>
+                        <button className={styles.addButton}>ADD EXPENSE</button>
                     </div>
-                    <div className={styles.authenticationContainer}>
-                        <p>Log in</p>
-                        <button>Get Started</button>
-                    </div>
-                    </div>
-                </div>
-                <div className={styles.mainContent}>
-                    <h1>Your online property portal</h1>
-                    <h3>Easily stay up to date on performance, maintenance, expenses<br></br> and income. Whether as a solo owner or with partners.</h3>
-                    {/* <h3>Mangaement platform for scaling property investors. Track performance, maintenance, expenses, and income.</h3> */}
-                    <button>$$$ Get Started</button>
-                    <p>*No credit card required</p>
-                    <div className={styles.ImageContainer}>
-{/*                         <Image
-                            src='/../../public/f4a5be82b777676929c8a77df1d0a715.png'
-                            alt=''
-                            width={700}
-                            height={400}
-                        ></Image> */}
+                    <div className={styles.bottomHeader}>
+                        <div className={styles.searchBar}>Search</div>
+                        <div className={styles.filterButton}>Filter</div>
                     </div>
                 </div>
-            </div>
-            <div className={styles.bottom}></div>
-            <div className={styles.contentOne}>
-                <div className={styles.contentOneTop}>
-                        <InsuranceCard/>
-                        <DataDisplay/>
+                <div className={styles.main}>
+                    <div className={styles.leftColumn}>
+                        <LedgerCard/>
+                        <LedgerCard/>
+                        <LedgerCard/>
+                        <LedgerCard/>
+                    </div>
+                    <div className={styles.rightColumn}>
+                        <div className={styles.incomeExpenses}>
+                            <div className={styles.income}>
+                                <p className={styles.amount}>$20,934.56</p>
+                                <p className={styles.label}>Balance</p>
+                            </div>
+                            <div className={styles.income}>
+                                <p className={styles.amount}>$17,934.22</p>
+                                <p className={styles.label}>Income</p>
+                            </div>
+                            <div className={styles.expenses}>
+                                <p className={styles.amount}>$6,098.89</p>
+                                <p className={styles.label}>Expenses</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
+    </Layout>
     )
 }
+
+export default Expenses

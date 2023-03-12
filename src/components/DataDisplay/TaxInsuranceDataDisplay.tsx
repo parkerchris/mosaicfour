@@ -1,11 +1,9 @@
-
-
-import styles from "../../styles/MaintenanceDataDisplay.module.css"
+import styles from "../../styles/TaxInsuranceDataDisplay.module.css"
 import { useState } from "react"
 import DataPoint from "./DataPoint"
 
 
-export default function MaintenanceDataDisplay() {
+export default function TaxInsuranceDataDisplay() {
     
    
     
@@ -13,13 +11,13 @@ export default function MaintenanceDataDisplay() {
         <div className={styles.mainContainer}>
             <div className={styles.leftContainer}>
                 <div className={styles.selectorContainer}>
-                    <p>Open Requests</p>
+                    <p>Property Taxes</p>
                 </div>
                 <div className={styles.selectorContainer}>
-                    <p>Closed Requests</p>
+                    <p>Umbrella Policy</p>
                 </div>
                 <div className={styles.selectorContainer}>
-                    <p>Capital Expendetures</p>
+                    <p>Fire Insurance</p>
                 </div>
                 <div className={styles.selectorContainer}>
                     <p>Comments</p>
@@ -28,7 +26,7 @@ export default function MaintenanceDataDisplay() {
             <div className={styles.rightContainer}>
                
 
-                <div>THIS IS MAINTENANCE</div>
+                <div>THIS IS TAX and Insurance</div>
 
             </div>
             <div className={styles.farRightContainer}>

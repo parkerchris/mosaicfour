@@ -90,6 +90,9 @@ const resolvers = {
         const loadedProperty = await prisma.property.findUnique({
           where: {
             id: args.propId
+          },
+          include: {
+            propertyData: true,
           }
         })
 
@@ -190,6 +193,17 @@ const typeDefs = gql`
     city: String
     state: String
     zip: String
+    propertyData: PropertyData
+  }
+
+  type PropertyData {
+    id: String
+    property: Property
+    beds: String
+    baths: String
+    sqft: String
+    rent: String
+    rentDuration: String
   }
 
   type CreateUserTypeResponse {

@@ -74,7 +74,7 @@ model Property {
   //rentDuration      String?
   //propertyGroup     PropertyGroup?     @relation(fields: [propertyGroupId], references: [id])
   //propertyGroupId   String?            @unique
-  //insurancePolicies InsurancePolicy[]
+  insurancePolicies InsurancePolicy[]
   //tenants           Tenant[]
   propertyData      PropertyData?
 }
@@ -91,24 +91,29 @@ model PropertyData {
   id            String      @id @default(cuid())
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
-  property      Property    @relation(fields: [propertyId], references: [id])
+  property      Property    @relation(fields: [propertyId], references: [id], onDelete: Cascade)
   propertyId    String      @unique
-  beds          Float?      
-  baths         Float?
-  sqft          Int?
+  beds          String?      
+  baths         String?
+  yearBuilt     Int?
+  sqft          String?
   value         Int?
   purchasePrice Int?
-  rent          Int?
+  purchaseDate  Int?
+  rent          String?
   rentDuration  RentDuration?
-
+  mailboxNumber String?
+  mailboxLocation String?
+  garbageDay  String?
+  landscapeDay  String?
 }
 
 model InsurancePolicy {
   id           String    @id @default(cuid())
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
-  //property     Property? @relation(fields: [propertyId], references: [id])
-  //propertyId   String?   
+  property     Property? @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  propertyId   String?   
   policyType   String?
   policyNumber String?
 }
