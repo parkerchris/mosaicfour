@@ -1,6 +1,6 @@
 
 import { useRouter } from "next/router"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useQuery } from '@apollo/client'
 import PropertyOperations from '../../graphql/operations/properties'
 import Layout from '../../components/Layout/Layout'
@@ -9,6 +9,9 @@ import InsuranceCard from "@/components/Properties/InsuranceCard"
 import DataDisplay from "@/components/DataDisplay/DataDisplay"
 import MaintenanceDataDisplay from "@/components/DataDisplay/MaintenanceDataDisplay"
 import TaxInsuranceDataDisplay from "@/components/DataDisplay/TaxInsuranceDataDisplay"
+import { IoBatteryHalfSharp } from "react-icons/io5"
+import { BADHINTS } from "dns"
+import PerformanceDisplay from "@/components/DataDisplay/PerformanceDisplay"
 
 
 export default function Property() {
@@ -22,7 +25,7 @@ export default function Property() {
 
     console.log(data)
 
-    const [ dataDisplayed, setDataDisplayed ] = useState("propertyInfo")
+    const [ dataDisplayed, setDataDisplayed ] = useState("performance")
 
     return (
         <Layout>
@@ -48,7 +51,10 @@ export default function Property() {
                     <div className={styles.main}>
                         <div className={styles.headerSelectorContainer}>
                             <div className={styles.selectorContainer}>
-                                <p className={styles.selector}>Performance</p>
+                                <p 
+                                    className={styles.selector}
+                                    onClick={() => setDataDisplayed("performance")}
+                                        >Performance</p>
                             </div>
                             <div className={styles.selectorContainer}>
                                 <p 
@@ -123,9 +129,23 @@ export default function Property() {
 
                             {(() => {
                                     switch (dataDisplayed) {
+                                    case 'performance':
+                                        return <PerformanceDisplay/>
                                     case 'propertyInfo':
                                         return <DataDisplay
                                                 sqft={data?.loadProperty.propertyData.sqft}
+                                                propInfoId={data?.loadProperty.propertyData.id}
+                                                beds={data?.loadProperty.propertyData.beds}
+                                                baths={data?.loadProperty.propertyData.baths}
+                                                yearBuilt={data?.loadProperty.propertyData.yearBuilt}
+                                                purchasePrice={data?.loadProperty.propertyData.purchasePrice}
+                                                purchaseDate={data?.loadProperty.propertyData.purchaseDate}
+                                                rent={data?.loadProperty.propertyData.rent}
+                                                rentDuration={data?.loadProperty.propertyData.rentDuration}
+                                                mailboxNumber={data?.loadProperty.propertyData.mailboxNumber}
+                                                mailboxLocation={data?.loadProperty.propertyData.mailboxLocation}
+                                                garbageDay={data?.loadProperty.propertyData.garbageDay}
+                                                landscapeDay={data?.loadProperty.propertyData.landscapeDay}
                                             />
                                     case 'maintenance':
                                         return <MaintenanceDataDisplay/>

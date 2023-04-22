@@ -1,0 +1,6 @@
+-- AlterTable
+ALTER TABLE "PropertyData" ADD COLUMN     "parcelNumber" TEXT,
+ALTER COLUMN "value" SET DATA TYPE TEXT,
+ALTER COLUMN "purchasePrice" SET DATA TYPE TEXT,
+ALTER COLUMN "purchaseDate" SET DATA TYPE TEXT,
+ALTER COLUMN "yearBuilt" SET DATA TYPE TEXT;

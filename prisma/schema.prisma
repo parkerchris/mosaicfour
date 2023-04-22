@@ -95,13 +95,14 @@ model PropertyData {
   propertyId    String      @unique
   beds          String?      
   baths         String?
-  yearBuilt     Int?
+  yearBuilt     String?
+  parcelNumber  String?
   sqft          String?
-  value         Int?
-  purchasePrice Int?
-  purchaseDate  Int?
+  value         String?
+  purchasePrice String?
+  purchaseDate  String?
   rent          String?
-  rentDuration  RentDuration?
+  rentDuration  String?
   mailboxNumber String?
   mailboxLocation String?
   garbageDay  String?

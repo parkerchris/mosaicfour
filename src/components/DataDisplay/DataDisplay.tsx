@@ -1,31 +1,82 @@
 import styles from "../../styles/DataDisplay.module.css"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useMutation, useQuery } from '@apollo/client'
 import DataPoint from "./DataPoint"
+import PropertyOperations from "../../graphql/operations/properties"
 
 
-export default function DataDisplay( props: any ) {
-/* 
+export default function DataDisplay( props: any ) { 
+
     const [ propertyInfo, setPropertyInfo ] = useState({
-        sgft: "-",
-        beds: "-",
-        baths: "-",
-        yearBuilt: "-",
-        dateOfPurchase: "-",
-        purchasePrice: "-",
-        parcelNumber: "-",
-        mailboxNumber: "-",
-        mailBoxLocation: "-",
-        garbageDay: "-",
-        landscapeDay: "-",
-    }) */
+        sqft: props.sqft,
+        beds: props.beds,
+        baths: props.baths,
+        yearBuilt: props.yearBuilt,
+        purchaseDate: props.purchasePrice,
+        purchasePrice: props.purchasePrice,
+        rent: props.rent,
+        rentDuration: props.rentDuration,
+        /* parcelNumber: props.parcelNumber, */
+        mailboxNumber: props.mailboxNumber,
+        mailBoxLocation: props.mailboxLocation,
+        garbageDay: props.garbageDay,
+        landscapeDay: props.landscapeDay,
+    })
 
-    const [ propertyInfo, setPropertyInfo ] = useState("-")
+    const reloadSession = () => {
+        const event = new Event("visibilitychange")
+        document.dispatchEvent(event)
+    }
+
+    function refreshPage() {
+        window.location.reload()
+    }
+
+
+    const handleChange = (event: any) => {
+        event.preventDefault()
+        setPropertyInfo(prevPropertyInfo => {
+            return {
+                ...prevPropertyInfo,
+                [event.target.name]: event.target.value
+            }
+        })
+    }
     
     
+    const [ updatePropertyInfo, {data, loading, error} ] = useMutation(PropertyOperations.Mutations.updatePropertyInfo)
+
+    const handleSubmit = async (event: any) => {
+        event.preventDefault()
+        try {
+            await updatePropertyInfo({ variables: {
+                propInfoId: props.propInfoId,
+                sqft: propertyInfo.sqft,
+                beds: propertyInfo.beds,
+                baths: propertyInfo.baths,
+                yearBuilt: propertyInfo.yearBuilt,
+                purchaseDate: propertyInfo.purchaseDate,
+                purchasePrice: propertyInfo.purchasePrice,
+                mailboxNumber: propertyInfo.mailboxNumber,
+                garbageDay: propertyInfo.garbageDay,
+                landscapeDay: propertyInfo.landscapeDay,
+            }})
+        } catch(error) {
+            console.log(error)
+        }
+        setEditMode(false)
+        
+        //reloadSession()
+        //This works, but is there a better way besides refreshing the page?
+        refreshPage()
+    }
+
+
+
+
     const [ editMode, setEditMode ] = useState(false)
 
     function edit(event: any) {
-
         setEditMode(!editMode)
     }
     
@@ -46,31 +97,165 @@ export default function DataDisplay( props: any ) {
                 </div>
             </div>
             <div className={styles.rightContainer}>
-                <form>
+                <form onChange={handleChange}>
                     <div className={styles.dataPointContainer}>
-                        <label className={styles.label}>This is the square footage:</label>
+                        <label className={styles.label}>Sqft:</label>
                             { editMode ? 
                         <input
                             className={styles.input}
                             type="text"
-                            placeholder={props.sqft} 
+                            placeholder={propertyInfo.sqft}
+                            name="sqft"
                             ></input> :
-                        <p className={styles.p}>{props.sqft}</p>
-                }
+                        <p className={styles.p}>{propertyInfo.sqft}</p>
+                            }
+                    </div>
+
+                    
+                    <div className={styles.dataPointContainer}>
+                        <label className={styles.label}>Beds:</label>
+                            { editMode ? 
+                        <input
+                            className={styles.input}
+                            type="text"
+                            placeholder={propertyInfo.beds}
+                            name="beds"
+                            ></input> :
+                        <p className={styles.p}>{propertyInfo.beds}</p>
+                            }
+                    </div>
+
+                    <div className={styles.dataPointContainer}>
+                        <label className={styles.label}>Baths:</label>
+                            { editMode ? 
+                        <input
+                            className={styles.input}
+                            type="text"
+                            placeholder={propertyInfo.baths}
+                            name="baths"
+                            ></input> :
+                        <p className={styles.p}>{propertyInfo.baths}</p>
+                            }
+                    </div>
+
+                    <div className={styles.dataPointContainer}>
+                        <label className={styles.label}>Year Built:</label>
+                            { editMode ? 
+                        <input
+                            className={styles.input}
+                            type="text"
+                            placeholder={propertyInfo.yearBuilt}
+                            name="yearBuilt"
+                            ></input> :
+                        <p className={styles.p}>{propertyInfo.yearBuilt}</p>
+                            }
+                    </div>
+
+                    <div className={styles.dataPointContainer}>
+                        <label className={styles.label}>Date of Purchase:</label>
+                            { editMode ? 
+                        <input
+                            className={styles.input}
+                            type="text"
+                            placeholder={propertyInfo.purchaseDate}
+                            name="dateOfPurchase"
+                            ></input> :
+                        <p className={styles.p}>{propertyInfo.purchaseDate}</p>
+                            }
+                    </div>
+
+                    <div className={styles.dataPointContainer}>
+                        <label className={styles.label}>Purchase Price:</label>
+                            { editMode ? 
+                        <input
+                            className={styles.input}
+                            type="text"
+                            placeholder={propertyInfo.purchasePrice}
+                            name="purchasePrice"
+                            ></input> :
+                        <p className={styles.p}>{propertyInfo.purchasePrice}</p>
+                            }
+                    </div>
+
+                    <div className={styles.dataPointContainer}>
+                        <label className={styles.label}>Parecel Number:</label>
+                            { editMode ? 
+                        <input
+                            className={styles.input}
+                            type="text"
+                            placeholder={propertyInfo.beds}
+                            name="parcelNumber"
+                            ></input> :
+                        <p className={styles.p}>{propertyInfo.beds}</p>
+                            }
+                    </div>
+
+                    <div className={styles.dataPointContainer}>
+                        <label className={styles.label}>Mailbox Number:</label>
+                            { editMode ? 
+                        <input
+                            className={styles.input}
+                            type="text"
+                            placeholder={propertyInfo.mailboxNumber}
+                            name="mailboxNumber"
+                            ></input> :
+                        <p className={styles.p}>{propertyInfo.mailboxNumber}</p>
+                            }
+                    </div>
+
+                    <div className={styles.dataPointContainer}>
+                        <label className={styles.label}>Mailbox Location:</label>
+                            { editMode ? 
+                        <input
+                            className={styles.input}
+                            type="text"
+                            placeholder={propertyInfo.mailBoxLocation}
+                            name="mailboxLocation"
+                            ></input> :
+                        <p className={styles.p}>{propertyInfo.mailBoxLocation}</p>
+                            }
+                    </div>
+
+                    
+                    <div className={styles.dataPointContainer}>
+                        <label className={styles.label}>Garbage Day:</label>
+                            { editMode ? 
+                        <input
+                            className={styles.input}
+                            type="text"
+                            placeholder={propertyInfo.garbageDay}
+                            name="garbageDay"
+                            ></input> :
+                        <p className={styles.p}>{propertyInfo.garbageDay}</p>
+                            }
+                    </div>
+
+                    
+                    <div className={styles.dataPointContainer}>
+                        <label className={styles.label}>Landscape Day:</label>
+                            { editMode ? 
+                        <input
+                            className={styles.input}
+                            type="text"
+                            placeholder={propertyInfo.landscapeDay}
+                            name="landscapeDay"
+                            ></input> :
+                        <p className={styles.p}>{propertyInfo.landscapeDay}</p>
+                            }
                     </div>
                     <DataPoint
                         editMode={editMode}
-                        label="Sqft"
+                        label="asdf"
                         dataValue={props.sqft}
                     />
                     <DataPoint
                         editMode={editMode}
-                        label="Beds"
+                        label="asdfasdf"
                         dataValue="3"
                     />
                     <DataPoint
                         editMode={editMode}
-                        label="Baths"
+                        label="asdf"
                         dataValue="2"
                     />
                     <DataPoint
@@ -116,8 +301,13 @@ export default function DataDisplay( props: any ) {
                 </form>   
             </div>
             <div className={styles.farRightContainer}>
-                <button onClick={edit}>Edit</button>
-                <button>Save</button>
+                <button 
+                    onClick={edit}
+                    /* disabled={editMode} */
+                    >Edit</button>
+                <button
+                    onClick={handleSubmit}
+                    >Save</button>
             </div>
         </div>
     )

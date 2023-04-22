@@ -177,7 +177,50 @@ const resolvers = {
       }
 
 
+    },
+
+    updatePropertyInfo: async (
+      parent: any,
+      args: any,
+      context: any,
+      info: any
+    ) => {
+      const { session, prisma } = context
+
+      if (!session?.user) {
+        //throw new ApolloError("Not Authorized");
+      }
+
+
+      try {
+
+        const propertyInfo = await prisma.propertyData.update({
+          where: {
+            id: args.propInfoId
+          },
+          data: {
+            sqft: args.sqft,
+            beds: args.beds,
+            baths: args.baths,
+            yearBuilt: args.yearBuilt,
+            value: "",
+            purchasePrice: args.purchasePrice,
+            purchaseDate: args.purchaseDate,
+            rent: args.rent,
+            rentDuration: args.rentDuration,
+            mailboxNumber: args.mailboxNumber,
+            mailboxLocation: args.mailboxLocation,
+            garbageDay: args.garbageDay,
+            landscapeDay: args.landscapeDay
+          }
+        })
+
+      } catch(error) {
+        console.log('Update property info error', error);
+      }
+
     }
+
   }
 };
 
@@ -202,8 +245,16 @@ const typeDefs = gql`
     beds: String
     baths: String
     sqft: String
+    yearBuilt: String
+    value: String
+    purchasePrice: String
+    purchaseDate: String
     rent: String
     rentDuration: String
+    mailboxNumber: String
+    mailboxLocation: String
+    garbageDay: String
+    landscapeDay: String
   }
 
   type CreateUserTypeResponse {
@@ -212,6 +263,11 @@ const typeDefs = gql`
   }
 
   type AddPropertyResponse {
+    success: Boolean
+    error: String
+  }
+
+  type UpdatePropertyResponse {
     success: Boolean
     error: String
   }
@@ -226,6 +282,21 @@ const typeDefs = gql`
   type Mutation {
     createUserType(userType: String): CreateUserTypeResponse
     addProperty(address: String!, city: String!, state: String!, zip: String!): AddPropertyResponse
+    updatePropertyInfo(
+      propInfoId: String!, 
+      sqft: String, 
+      beds: String,
+      baths: String,
+      yearBuilt: String,
+      purchasePrice: String,
+      purchaseDate: String,
+      rent: String,
+      rentDuration: String,
+      mailboxNumber: String,
+      mailboxLocation: String,
+      garbageDay: String,
+      landscapeDay: String
+        ): UpdatePropertyResponse
   }
 
 `;
